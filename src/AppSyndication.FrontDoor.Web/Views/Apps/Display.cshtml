@@ -1,0 +1,120 @@
+﻿@using AppSyndication.FrontDoor.Web.Models
+@model AppSyndication.FrontDoor.Web.Models.TagWithHistory
+
+@{
+    ViewBag.CurrentPage = "browse";
+    ViewBag.Title = "Application: " + Model.Name;
+    ViewBag.LinkTagId = Model.Id;
+    var showRequiredVersion = !String.IsNullOrEmpty(ViewBag.RequestVersion);
+}
+<div class="app-jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 col-xs-12">
+        <h1 class="hero-text">@Model.Name <br><small>v@(Model.Version)</small></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-panel">
+  <div class="container">
+    <article class="row">
+      <div class="col-sm-2 app-list-icon">
+        <img alt="@Model.Name icon" height="96" width="96" src="@Model.ImageUri" onerror="this.src='/images/appdefaulticon-50x50.png';">
+      </div>
+      <div class="col-sm-7 tag-body">
+        <header class="page-header">
+          <h1>@Model.Name <small>v@(Model.Version)</small></h1>
+        </header>
+        <section class="description">
+          <p>@Model.Description</p>
+        </section>
+
+        <section>
+          <div class="btn-group pull-right">
+            <a class="btn btn-success btn-lg" asp-action="Download" asp-route-id="@Model.Id" asp-route-version="@Model.Version"><span class="glyphicon glyphicon-download-alt"></span> Download</a>
+            <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a asp-action="Download" asp-route-id="@Model.Id" asp-route-version="@Model.Version"><span class="glyphicon glyphicon-download-alt"></span> Download Application</a></li>
+              <li class="divider"></li>
+              <li><a asp-action="Display" asp-route-id="@Model.Id" asp-route-version="@ViewBag.RequestVersion" asp-route-format="json"><span class="glyphicon glyphicon-download-alt"></span> Software Tag as JSON</a></li>
+              <li><a asp-action="Display" asp-route-id="@Model.Id" asp-route-version="@ViewBag.RequestVersion" asp-route-format="xml"><span class="glyphicon glyphicon-download-alt"></span> Software Tag as XML</a></li>
+            </ul>
+          </div>
+          <div class="fineprint">
+            <p><em>Instructions</em>: Download app via the green button or automate installation with the OneGet command below.</p>
+          </div>
+        </section>
+
+        <section>
+          <div class="input-group input-group-lg cmd-line">
+            <span class="input-group-addon input-group-addon-adjust-mega highlight-target" data-toggle="tooltip" data-placement="top" data-highlight-target="#cmd" title="OneGet command-line"><span class="mega-octicon octicon-terminal"></span></span>
+            <input type="text" id="cmd" class="form-control highlight-text" value="Install-Package @Model.Alias @if (showRequiredVersion) { <text>-RequiredVersion </text> @Model.Version }" readonly>
+            <span class="input-group-btn">
+              <button id="copy-btn" aria-label="Copy to clipboard" data-clipboard-target="cmd" class="btn btn-default highlight-target" data-highlight-target="#cmd"  type="button"><span class="glyphicon glyphicon-copy"></span></button>
+            </span>
+          </div>
+        </section>
+
+        <section>
+          <header class="collapse-toggle collapsed" data-target="#history" data-toggle="collapse" aria-expanded="false" aria-controls="history">
+            <h3 class="history-title">Release History</h3>
+            <span class="glyphicon glyphicon-collapse-down icon-collapse-open"></span>
+            <span class="glyphicon glyphicon-collapse-up icon-collapse-close"></span>
+          </header>
+          <div id="history" class="collapse" aria-expanded="false">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Version</th>
+                <th>Last Updated</th>
+                <th>Downloads</th>
+              </tr>
+            </thead>
+            <tbody>
+@foreach (var history in Model.History)
+{
+              var historyActive = (history.Version == Model.Version) ? "warning" : null;
+              var historyUrl = Url.Action("Display", new { id = ViewBag.RequestAliasOrId, version = history.Version });
+              <tr class="@historyActive"@if (historyActive == null) { <text> data-href="@historyUrl"</text> }>
+                <td>@history.Title</td>
+                <td>v@(history.Version)</td>
+                <td>@history.Updated.ToString("D")</td>
+                <td>@history.DownloadCount</td>
+              </tr>
+}
+            </tbody>
+          </table>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-sm-3">
+          <div class="well app-meta">
+        <div>
+          <p class="app-meta-data">@Model.DownloadCount.ToString("N0")<p>
+          <p class="app-meta-label">@(Model.DownloadCount == 1 ? "Download" : "Downloads")</p>
+        </div>
+        <div class="app-meta">
+          <p class="app-meta-data">@Model.Updated.ToString("yyyy-MM-dd")<p>
+          <p class="app-meta-label">Last updated</p>
+        </div>
+        <div class="app-meta">
+          <ul>
+          @foreach (var keyword in Model.Keywords) {
+            <li><a class="inline" asp-controller="Apps" asp-action="Index" asp-route-q="@keyword" title="Search for @keyword"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> @keyword</a></li>
+          }
+          </ul>
+        </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+@section Scripts
+{
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.js"></script>
+  <script src="/content/clip.js"></script>
+}

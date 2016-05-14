@@ -1,0 +1,145 @@
+﻿@model AppSyndication.Web.Models.TagResults
+
+@{
+    ViewBag.CurrentPage = "browse";
+
+    var searched = !String.IsNullOrEmpty(Model.Query);
+
+    ViewBag.Title = searched ? "Search Applications" : "Browse Applications";
+
+    var pluralSearch = (Model.ResultsCount == 1) ? "application" : "applications";
+    var start = (Model.Page - 1) * Model.PerPage + 1;
+    var end = Math.Min(Model.Page * Model.PerPage, Model.ResultsCount);
+}
+<div class="secondary-jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 col-xs-12">
+        <h1 class="hero-text">@ViewBag.Title</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-panel">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        @if (searched) {
+        <h1>Search for <i>@Model.Query</i> returned @Model.ResultsCount @pluralSearch</h1>
+        }
+        @if (start < end) {
+        <h3>Displaying results @start to @end out of @Model.ResultsCount.</h3>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-panel">
+  <div class="container">
+@foreach (var tag in Model.Tags) {
+      <article class="row app-list">
+        <div class="col-sm-12">
+        <div class="row">
+        <div class="app-list-icon col-sm-1">
+          <a asp-route="DisplayApp" asp-route-id="@tag.Alias" title="View more about @tag.Name">
+            <img alt="@tag.Name icon" height="50" width="50" src="@tag.ImageUri" onerror="this.src='/images/appdefaulticon-50x50.png';">
+          </a>
+        </div>
+        <div class="app-list-body col-sm-9">
+          <header>
+            <h2><a asp-route="DisplayApp" asp-route-id="@tag.Alias">@tag.Name</a></h2>
+            <!--<small>Last updated: <time datetime="@tag.Updated.ToString("O")" pubdate="">@tag.Updated.ToString("yyyy-MM-dd")</time> | Latest version: v@(tag.Version)</small>-->
+          </header>
+          <section>
+            <p>
+              @tag.Description
+            </p>
+          </section>
+        </div>
+        </div>
+        <!--
+        <section class="app-list-body row">
+          <div id="using-oneget" class="col-sm-offset-3 col-sm-6">
+            <div class="input-group input-group-sm js-zeroclipboard-container in-monospace">-->
+              <!--<span class="input-group-addon" style="font:'lucida console', monospace">PS C:\></span>-->
+<!--              <span class="input-group-addon"><span class="octicon octicon-terminal"></span></span>
+              <input type="text" id="copy-@(tag.Alias)" class="form-control input-mini in-monospace js-url-field js-zeroclipboard-target" value="Install-Package git-install" readonly="readonly">
+              <span class="input-group-btn">
+                <button aria-label="Copy to clipboard" data-clipboard-target="copy-@(tag.Alias)" data-clipboard-text="default stuff!" class="btn js-zeroclipboard zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+              </span>
+            </div>-->
+            <!--<p>
+              <code class="cmd-sm">PS C:\&gt; Install-Package git.install</code>  <a href="#"><span class="glyphicon glyphicon-copy"></span> OneGet command</a>
+            </p>-->
+<!--          </div>
+        </section>-->
+
+        <div class="app-list-body row">
+          <footer class="col-sm-offset-1 col-sm-7 well">
+            <small>
+              <p>
+              <strong>@tag.DownloadCount.ToString("N0")</strong> @(tag.DownloadCount == 1 ? "download" : "downloads").
+              <span class="no-break">Latest version <strong>v@(tag.Version)</strong></span> updated <span class="no-break">on <strong>@tag.Updated.ToString("yyyy-MM-dd")</strong>.</span>
+              </p>
+              <p>
+              @foreach (var keyword in tag.Keywords) {
+              <a class="inline" asp-action="Index" asp-controller="Apps" asp-route-q="@keyword" title="Search for @keyword"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> @keyword</a>
+              }
+              </p>
+            </small>
+          </footer>
+          <!--<footer class="col-sm-5">
+            <small>
+            </small>
+              <ul>
+              @foreach (var keyword in tag.Keywords) {
+              <li><a href="/tags?q=@keyword" title="Search for @keyword"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> @keyword</a></li>
+              }
+              </ul>-->
+
+            <!--<p>Last updated to version <strong>v@(tag.Version)</strong> on <strong>@tag.Updated.ToString("yyyy-MM-dd")</strong></p>
+            <p><strong>@tag.DownloadCount.ToString("N0")</strong> total downloads.</p>
+            <p>Tagged: wix git something else.</p>-->
+
+
+            <!--<p><strong>@tag.DownloadCount.ToString("N0")</strong> total downloads. Last updated to version <strong>v@(tag.Version)</strong> on <strong>@tag.Updated.ToString("yyyy-MM-dd")</strong>. Tagged: wix git something else.</p>-->
+            <!--<p>Has <strong>@tag.DownloadCount.ToString("N0")</strong> total downloads and was updated to version <strong>v@(tag.Version)</strong> on <strong>@tag.Updated.ToString("yyyy-MM-dd")</strong> and tagged as: wix git something else.</p>-->
+            <!--<p>Last updated on <strong>@tag.Updated.ToString("yyyy-MM-dd")</strong> to version <strong>v@(tag.Version)</strong> and has <strong>@tag.DownloadCount.ToString("N0")</strong> total downloads tagged as: wix git something else.</p>-->
+            <!--<p>Latest version is <strong>v@(tag.Version)</strong> and was updated on <strong>@tag.Updated.ToString("yyyy-MM-dd")</strong> with <strong>@tag.DownloadCount.ToString("N0")</strong> total downloads tagged as: wix git something else.</p>-->
+          <!--</footer>-->
+          <!--<footer>
+            <section class="downloads">@tag.DownloadCount.ToString("N0") downloads</section>
+            @if (tag.Keywords.Any()) {
+            <section class="tags">
+              <p>tagged</p>
+              <ul>
+              @foreach (var keyword in tag.Keywords) {
+              <li><a href="/tags?q=@keyword" title="Search for @keyword">@keyword</a></li>
+              }
+              </ul>
+            </section>
+            }
+          </footer>-->
+        </div>
+        </div>
+<!--
+        <div class="app-list-meta col-sm-3 hidden-xs">
+            <section class="downloads" title="Lastest version v@(tag.Version)">v@(tag.Version)</section>
+            <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <time datetime="@tag.Updated.ToString("O")" pubdate="">@tag.Updated.ToString("yyyy-MM-dd")</time></p>
+            <section class="downloads">@tag.DownloadCount.ToString("N0") downloads</section>
+            @if (tag.Keywords.Any()) {
+            <section class="mtags">
+              <ul>
+              @foreach (var keyword in tag.Keywords) {
+              <li><a href="/tags?q=@keyword" title="Search for @keyword"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> @keyword</a></li>
+              }
+              </ul>
+            </section>
+            }
+        </div>-->
+      </article>
+}
+  </div>
+</div>

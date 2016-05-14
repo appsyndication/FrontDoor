@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "AppSyndication - Broadcasting applications across the internet";
+}
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-sm-4 col-xs-12 hero-image">
+        <img src="/img/feed-icon.svg">
+      </div>
+      <div class="col-lg-6 col-sm-8 col-xs-12 hero-text">
+        <h1>AppSyndication <small>Broadcasting applications across the internet.</small></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-panel">
+  <div class="container">
+    <div class="row">
+      <section id="header" class="col-xs-12 page-header">
+        <h2>The fastest way to install your favorite applications.</h2>
+      </section>
+      <section id="search-main" class="col-xs-12">
+        <form id="search" asp-controller="Apps" role="search">
+          <div class="input-group input-group-lg">
+            <input class="form-control" name="q" type="text" placeholder="Search the application catalog">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="white-panel">
+  <div class="container">
+    <div class="row">
+      <article class="col-sm-6 col-xs-12">
+        <h3>More information goes here</h3>
+        <p>More information goes here.</p>
+      </article>
+
+      <article class="col-sm-6 col-xs-12">
+        <h3>More information goes here</h3>
+        <p>More information goes here.</p>
+      </article>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.CurrentPage = "howto";
+    ViewBag.Title = "How To Use OneGet With AppSyndication";
+}
+<div class="oneget-jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-xs-12">
+        <h1 class="hero-text">@ViewBag.Title</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-panel">
+  <div class="container">
+    <div class="row">
+      <article id="get-started" class="col-sm-6 col-xs-12">
+        <h3>How to Get Started</h3>
+        <p>If you are new here, follow the next 3 steps to get going.</p>
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <section class="panel panel-default">
+            <div class="panel-heading" role="tab" id="install-oneget-heading">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-install-oneget" aria-expanded="true" aria-controls="collapse-install-oneget">
+                  <span class="step">1</span> Install OneGet
+                </a>
+              </h4>
+            </div>
+            <div id="collapse-install-oneget" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="install-oneget-heading">
+              <div class="panel-body">
+                <p>OneGet is the new package manager in Windows 10.</p>
+                <p>It is also available for older versions of Windows. If you are not running Windows 10, you will need to:</p>
+                <a href="http://oneget.org/install-oneget.exe" class="btn btn-primary btn-sm">Install OneGet</a>
+              </div>
+            </div>
+          </section>
+          <section class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <span class="step">2</span> Load OneGet
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+              <p>Once you have OneGet installed (or if you were already running Windows 10), open a PowerShell command prompt and
+                 load the OneGet module.</p>
+              <pre><code>PS C:\> Import-Module OneGet</code></pre>
+              </div>
+            </div>
+          </section>
+          <section class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <span class="step">3</span> Install an Application
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+                <p>With OneGet loaded you can now install your favorite packages with a simple <kbd>Install-Package</kbd> command.</p>
+                <p>If you're not sure what to install, <a asp-controller="Apps">browse the applications</a> to find something interesting.</p>
+                <pre><code>PS C:\> Install-Package wix4</code></pre>
+              </div>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <div class="col-sm-6 col-xs-12">
+        <h3><span class="step">2</span> AppSyndication Spec</h3>
+        <p>AppSyndication extends the Atom Syndication Format specification (<a href="http://tools.ietf.org/html/rfc4287">RFC 4287</a>) with the minimal set of elements to describe an application.</p>          <a href="/spec">Read the spec</a>
+      </div>
+    </div>
+  </div>
+</div>
