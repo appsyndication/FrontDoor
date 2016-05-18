@@ -23,8 +23,8 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.TraceSource": "1.0.0-rc1-final",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
-    "AppSyndication.BackendModel.Data": "1.0.0-build5",
-    "AppSyndication.BackendModel.IndexedData": "1.0.0-build5"
+    "AppSyndication.BackendModel.Data": "1.0.0-build8",
+    "AppSyndication.BackendModel.IndexedData": "1.0.0-build8"
   },
 
   "commands": {

@@ -33,12 +33,11 @@ namespace AppSyndication.FrontDoor.Web
 
             services.Configure<OpenIdConnectConfig>(this.Configuration.GetSection("OpenIdConnect"));
 
-            services.AddSingleton<Connection>(s => new Connection(connectionString));
-
-            services.AddScoped<ITagIndex, TagIndex>();
-
             services.AddAuthentication(sharedOptions =>
                 sharedOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+
+            services.AddTagStorage(connectionString)
+                .AddTagIndex();
 
             services.ConfigureRouting(options =>
             {
