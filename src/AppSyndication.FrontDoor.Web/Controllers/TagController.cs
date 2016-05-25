@@ -7,24 +7,39 @@ namespace AppSyndication.FrontDoor.Web.Controllers
 {
     //  [ResponseCache(Duration = 20)]
     [Route("[controller]")]
-    public class TagsController : Controller
+    public class TagController : Controller
     {
-        private const int PerPage = 30;
         private readonly ILogger _logger;
         private readonly ITagIndex _tagIndex;
 
-        public TagsController(ILoggerFactory loggerFactory, ITagIndex tagIndex)
+        public TagController(ILoggerFactory loggerFactory, ITagIndex tagIndex)
         {
-            _logger = loggerFactory.CreateLogger<TagsController>();
+            _logger = loggerFactory.CreateLogger<TagController>();
 
             _tagIndex = tagIndex;
         }
 
-        public IActionResult Index(string format = null, string q = null, int pg = 1)
+        [HttpGet("{id}/{version?}/{os?}/{arch?}")]
+        public IActionResult Display(string id, string version, string os, string arch, string format = null)
         {
             var negotiatedFormat = this.NegotiateFormat(format);
 
-            return this.IndexAsTag(negotiatedFormat, q, pg);
+            if (negotiatedFormat == Format.Html)
+            {
+                return this.RedirectToRoute("DisplayApp", new { id, version, os, arch });
+            }
+
+            // TODO: use version, os, arch to make sure we're getting the right tag.
+            var tagUri = _tagIndex.GetTagUri(id, negotiatedFormat == Format.Xml);
+
+            if (tagUri == null)
+            {
+                _logger.LogWarning($"Could not find tag: {id}");
+
+                return this.HttpNotFound();
+            }
+
+            return this.Redirect(tagUri);
         }
 
         private Format NegotiateFormat(string format)
@@ -54,26 +69,6 @@ namespace AppSyndication.FrontDoor.Web.Controllers
             }
 
             return result;
-        }
-
-        private IActionResult IndexAsTag(Format format, string query, int page)
-        {
-            var formatString = format.ToString().ToLowerInvariant();
-
-            if (String.IsNullOrWhiteSpace(query))
-            {
-                return this.Redirect($"https://appsyndication.blob.core.windows.net/tags/sources/https-github-com-appsyndication-test-tree-master/index.{formatString}.swidtag");
-            }
-
-            var results = _tagIndex.SearchTags(query, page, PerPage);
-
-            return this.TagResultsAction(results, formatString);
-        }
-
-        private IActionResult TagResultsAction(TagResults results, string format)
-        {
-            var content = "{ \"error\": \"Not supported yet.\" }";
-            return this.Content(content, "application/swid-tag+json");
         }
 
         private enum Format

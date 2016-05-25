@@ -1,2 +1,2 @@
 [config]
-project = src/AppSyndication.FrontDoor.Web
+project = src\AppSyndication.FrontDoor.Web

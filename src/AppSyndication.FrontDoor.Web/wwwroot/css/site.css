@@ -18,17 +18,12 @@ footer {
   color: #fff;
   background-color: #000;
 }
-.white-panel {
-  background-color: #fff;
-}
 
 .navbar {
   background-color: rgba(221, 72, 20, .8)
 }
 
-
 /*
-
 antenna2.jpg https://www.flickr.com/photos/squeaks2569/4031665280/in/photolist-79gkCm-MXiU7-a4GSfP-arM7Z5-8zJTco-bvwrBw-8t24pv-8t24xt-8t56Cq-D2cVQ-43Fdxd-KLaSC-inpP9s-brBZGB-F7UE6-F7UDt-F7UCD-4r9ndH-5Jzbig-9iGM1c-5t4Rvf-6L8f5V-6VEn7Z-e7smL5-ap8zkU-fFFdHX-qKdfco-qaqjqF-oZNoWd-7vFeFc-ocULmw-JPGCv-43FeJE-79M6wY-c5rBuY-pu4EHs-8oHV2A-ocFBfR-nkwFzj-LMpXr-LMgbd-9iQeHn-9dsPvL-647FhP-qRUoDu-5AbpoH-kxZSW-eb1FFr-EkhdQ-ebuaAE
 
 antenna3.jpg https://www.flickr.com/photos/mescalina/14004492040/in/photolist-ocULmw-JPGCv-43FeJE-79M6wY-c5rBuY-pu4EHs-8oHV2A-ocFBfR-nkwFzj-LMpXr-LMgbd-9iQeHn-9dsPvL-647FhP-qRUoDu-5AbpoH-kxZSW-eb1FFr-EkhdQ-ebuaAE-8tx2Tp-7bYGoK-7c3vBo-5NPoDj-7x7b24-7bYDFZ-7c3uBf-5Teo5H-nDBT3Z-5JzvTe-7N8kUB-s1GQt-43B5Mk-7N95ux-32VQ15-39S6N-ptzuSx-pwhjum-otratJ-otbvVe-otraAh-otrb7N-9YsNx5-pc6dW9-prxAvy-prxw4N-7XK9p8-ptxVB3-39S6P-c2zgM7
@@ -47,52 +42,75 @@ antenna_sunset5.jpg https://www.flickr.com/photos/120610482@N04/13213145013/in/p
 
 antenna_sunset6.jpg https://www.flickr.com/photos/daquellamanera/2883715600/in/photolist-F94kt-tE7YjS-9dsPvL-5SPyB4-9K8MUA-9ZJaep-92Yjfw-6ebEbF-43B5Mk-bic5Bp-2jZMhT-7JsrvP-8bGXYJ-m8zsP6-bxeC8-cN5ng-78iQqN-92YjvW-cnEBR-36AoDw-sbpj2D-6i5n6o-4gGBoL-9VRRZJ-47WKqC-4k6gVT-ar1tA-5oPNbu-9ZM22E-5oGqYF-PbRmf-gfcSoz-4eQCNf-cobsWh-6i1dnV-ftHu7-6i1hCP-p4mHcb-43FeJE-5qAfD5-5qvV7i-5qAfnh-trC4i-8KUMLy-47SGHX-3RdbPW-5ZxBER-hiDUCL-dGHDew-m8APF4
 
-
 antenna_sunset7.jpg https://www.flickr.com/photos/8058853@N06/8452224983/in/photolist-dSTS1X-8j3nL9-qJkkzf-9aqbhW-9aqbz9-cAvoK1-fQJxj-5W38et-bQnWqP-6aaPCU
-
 */
 
-.jumbotron {
-  background-image: url(/img/backgrounds/antenna_sunset5.jpg);
+.hero {
+  background-color: #dd4814;
   background-repeat: no-repeat;
-  background-position: top;
   background-size: cover;
   margin-bottom: 0px;
-  padding-top: 110px;
+  padding: 50px 0px 0px;
 }
 
-.jumbotron .hero-image {
+.hero .hero-image {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.jumbotron .hero-text {
+.hero .hero-text {
   padding: 20px;
   background-color: rgba(0, 0, 0, .8);
   color: #fff;
 }
 
-.jumbotron h1 {
+.hero h1 {
   line-height: 50px;
 }
 
-.secondary-jumbotron {
-  background-image: url(/img/backgrounds/antenna_sunset7.jpg);
-  background-repeat: no-repeat;
+.hero-background1 {
+  background-image: url(/img/backgrounds/antenna_sunset1.jpg);
   background-position: center;
-  background-size: cover;
-  margin-bottom: 0px;
-  padding-top: 75px;
-  padding-bottom: 40px;
+  min-height: 110px;
 }
 
-.secondary-jumbotron .hero-text {
-  padding: 20px;
-  background-color: rgba(0, 0, 0, .8);
-  color: #fff;
+.hero-background2 {
+  background-image: url(/img/backgrounds/antenna_sunset2.jpg);
+  background-position: center;
+  min-height: 110px;
 }
 
-.app-jumbotron {
+.hero-background3 {
+  background-image: url(/img/backgrounds/antenna_sunset3.jpg);
+  background-position: center;
+  min-height: 110px;
+}
+
+.hero-background4 {
+  background-image: url(/img/backgrounds/antenna_sunset4.jpg);
+  background-position: center;
+  min-height: 110px;
+}
+
+.hero-background5 {
+  background-image: url(/img/backgrounds/antenna_sunset5.jpg);
+  background-position: top;
+  min-height: 110px;
+}
+
+.hero-background6 {
+  background-image: url(/img/backgrounds/antenna_sunset6.jpg);
+  background-position: center;
+  min-height: 110px;
+}
+
+.hero-background7 {
+  background-image: url(https://appsyndication.azureedge.net/img/backgrounds/antenna_sunset7.jpg);
+  background-position: center;
+  min-height: 110px;
+}
+
+/*.app-jumbotron {
   background-image: url(/img/backgrounds/antenna_sunset3.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -138,6 +156,19 @@ antenna_sunset7.jpg https://www.flickr.com/photos/8058853@N06/8452224983/in/phot
   padding: 20px;
   background-color: rgba(0, 0, 0, .8);
   color: #fff;
+}*/
+
+.hero-shadow {
+    position: relative;
+    height: 25px;
+    margin-bottom: -25px;
+    z-index: 1;
+    background: url(https://appsyndication.azureedge.net/img/jumbotron_shadow.png) no-repeat;
+    background-size: 100%;
+}
+
+.content {
+    margin-top: 25px;
 }
 
 span.step {
@@ -327,6 +358,16 @@ input.form-control,input.form-control:focus {
    -webkit-transition: none;
 }
 
+legend {
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+.sublegend {
+    font-size: 12px;
+    padding: 5px;
+}
+
 [data-href] {
   cursor: pointer;
 }
@@ -352,4 +393,12 @@ input.form-control,input.form-control:focus {
 
 .tag-body {
   margin-bottom: 50px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt25 {
+    margin-top: 25px;
 }

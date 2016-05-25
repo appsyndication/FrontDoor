@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AppSyndication.FrontDoor.Web", "src\AppSyndication.FrontDoor.Web\AppSyndication.FrontDoor.Web.xproj", "{7D1F0B4A-D562-4EB7-9CD2-15FED6402FBC}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Data", "..\BackendModel\src\AppSyndication.BackendModel.Data\Data.xproj", "{F75F973D-B9A1-4603-A47D-E1B958FF63D3}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IndexedData", "..\BackendModel\src\AppSyndication.BackendModel.IndexedData\IndexedData.xproj", "{1A5FEDA4-D1C2-4D1E-BA89-CD1805C9CFD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{7D1F0B4A-D562-4EB7-9CD2-15FED6402FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D1F0B4A-D562-4EB7-9CD2-15FED6402FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D1F0B4A-D562-4EB7-9CD2-15FED6402FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75F973D-B9A1-4603-A47D-E1B958FF63D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75F973D-B9A1-4603-A47D-E1B958FF63D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75F973D-B9A1-4603-A47D-E1B958FF63D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75F973D-B9A1-4603-A47D-E1B958FF63D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A5FEDA4-D1C2-4D1E-BA89-CD1805C9CFD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A5FEDA4-D1C2-4D1E-BA89-CD1805C9CFD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A5FEDA4-D1C2-4D1E-BA89-CD1805C9CFD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A5FEDA4-D1C2-4D1E-BA89-CD1805C9CFD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

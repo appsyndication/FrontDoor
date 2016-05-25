@@ -3,7 +3,9 @@
 @{
     ViewBag.CurrentPage = "browse";
 
-    ViewBag.Title = "Browse Applications";
+    var searched = !String.IsNullOrEmpty(Model.Query);
+
+    ViewBag.Title = searched ? "Search Applications" : "Browse Applications";
 
     var pluralSearch = (Model.ResultsCount == 1) ? "application" : "applications";
     var start = (Model.Page - 1) * Model.PerPage + 1;
@@ -23,8 +25,11 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
+        @if (searched) {
+        <h1>Search for <i>@Model.Query</i> returned @Model.ResultsCount @pluralSearch</h1>
+        }
         @if (start < end) {
-        <h3>Displaying @start to @end out of @Model.ResultsCount.</h3>
+        <h3>Displaying results @start to @end out of @Model.ResultsCount.</h3>
         }
       </div>
     </div>

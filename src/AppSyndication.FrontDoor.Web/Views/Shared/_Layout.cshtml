@@ -11,7 +11,7 @@
 @if (ViewBag.LinkTagId == null) {
     <link rel="feed" href="/tags/" />
 } else {
-    <link rel="package" href="/tags/@(ViewBag.LinkTagId)/" />
+    <link rel="package" href="/tag/@(ViewBag.LinkTagId)/" />
 }
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/united/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.4.1/octicons.css" rel="stylesheet">
@@ -22,7 +22,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body lang="en">
     <div class="wrapper">
     <header class="navbar navbar-default navbar-fixed-top navbar-transparent" role="banner">
       <div class="container">

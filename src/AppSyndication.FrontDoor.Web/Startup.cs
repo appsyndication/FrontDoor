@@ -16,7 +16,7 @@ namespace AppSyndication.FrontDoor.Web
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup()
         {
             this.Configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
@@ -24,7 +24,7 @@ namespace AppSyndication.FrontDoor.Web
                 .Build();
         }
 
-        public IConfigurationRoot Configuration { get; set; }
+        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -120,7 +120,6 @@ namespace AppSyndication.FrontDoor.Web
             );
         }
 
-        // Entry point for the application.
         public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

@@ -1,5 +1,3 @@
-/// <reference path="../../typings/jquery/jquery.d.ts"/>
-
 $(function () {
    $('.search-toggle').on('click', function () {
     var target = $(this).data("target");
